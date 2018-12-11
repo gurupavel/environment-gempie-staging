@@ -12,3 +12,17 @@ cleanup:
   Annotations:
     helm.sh/hook: pre-delete
     helm.sh/hook-delete-policy: hook-succeeded
+expose:
+  config:
+    domain: a6a0fd4ccfd6c11e8a8410e016faec7c-727f00a58081ff59.elb.us-east-1.amazonaws.com
+    exposer: Ingress
+    http: "true"
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+jenkins:
+  Servers:
+    Global:
+      EnvVars:
+        DOCKER_REGISTRY: 381850379063.dkr.ecr.us-east-1.amazonaws.com
+        TILLER_NAMESPACE: kube-system
